@@ -21,6 +21,8 @@ describe("quadratic-voting", () => {
   let mint: PublicKey
   let voterTokenAccount: any
 
+  const daoName = "DAO101"
+
   before("Setup accounts", async () => {
     const sig = await connection.requestAirdrop(voter.publicKey, 8_000_000_000)
     await connection.confirmTransaction(sig);
@@ -56,7 +58,6 @@ describe("quadratic-voting", () => {
   })
 
   it("Init DAO", async () => {
-    const daoName = "DAO101"
     const tx = await program.methods
       .initDao(daoName)
       .accounts({
